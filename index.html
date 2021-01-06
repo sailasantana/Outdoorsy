@@ -3,148 +3,49 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" type="text/css" href="index.css">
-
   <title>Outdoorsy</title>
-
+  <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+</head>
+<body>
   <div class='intro'>
-  <h1>Outdoorsy</h1>
-  <h2>Think Outside. No Box Required</h2>
-  <a id="map-link" href="#" aria-label="Click to Find Your Next Adventure">Find Your Next Adventure</a>
+    <h1>Outdoorsy</h1>
+    <h2>Think Outside. No Box Required</h2>
+    <p>Find great trails, campsites, and much more with our adventure search</p>
+    <a id="map-link" href="#" aria-label="Click to Get Started">Click to Get Started</a>
   </div>
-
 
   <div class="map hidden">
     <h1>Outdoorsy</h1>
-    <p>Move around or click anywhere to find your next adventure!</p>
-  <style>
-    html, body, #viewDiv {
-      padding: 0;
-      height: 100%;
-      width: 100%;
-    }
-  </style>
-  
-  <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
-  <script src="https://js.arcgis.com/4.18/"></script>
-  
-  <script>  
-    require([
-      "esri/Map",
-      "esri/views/MapView",
-      "esri/tasks/Locator",
-      "esri/Graphic"
-    ], function(Map, MapView, Locator, Graphic) {
+    <p>Make an adventure type selection and then move around, zoom in/out or click anywhere on the map! 
+   <a id="home-link" href="#" aria-label="Go back to Welcome Page">Back</a>
+    
+   <br>
+   <p>You can also do a quick weather check on your destination of choosing <a id="form-link" href="#" aria-label="Click here for a quick weather check on the location of your choosing">here</a> </p>
+    
+   
 
-      var map = new Map({
-        basemap: "topo-vector"
-      });
-      
-      var view = new MapView({
-        container: "viewDiv",
-        map: map,
-        center: [-118.80543,34.02700],
-        zoom: 6
-      });
-      
-      var places = ["Trail","Campground", "Beach","Ski Resort","Park"];
-      
-      var select = document.createElement("select","");
-       select.setAttribute("class", "esri-widget esri-select");
-       select.setAttribute("style", "width: 175px; font-family: Avenir Next W00; font-size: 1em");
-      places.forEach(function(p){
-        var option = document.createElement("option");
-        option.value = p;
-        option.innerHTML = p;
-        select.appendChild(option);
-      });
-      
-      view.ui.add(select, "top-right");
-      
-      var locator = new Locator({
-         url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-      });
-  
-      // Find places and add them to the map
-      function findPlaces(category, pt) {
-        locator.addressToLocations({
-          location: pt,
-          categories: [category],
-          maxLocations: 105,
-          outFields: ["Place_addr", "PlaceName"]
-        })
-        .then(function(results) {
-          view.popup.close();
-          view.graphics.removeAll();
-          results.forEach(function(result){
-            view.graphics.add(
-              new Graphic({
-                attributes: result.attributes,
-                geometry: result.location,
-                symbol: {
-                 type: "simple-marker",
-                 color: "#000000",
-                 size: "12px",
-                 outline: {
-                   color: "#ffffff",
-                   width: "2px"
-                 }
-                },
-                popupTemplate: {
-                  title: "{PlaceName}",
-                  content: "{Place_addr}"
-                }
-             }));
-          });
-        });
-      }
-      
-      // Search for places in center of map
-      // view.when(function() {
-      //   findPlaces(select.value, view.center); 
-      // });
-
-      view.watch("stationary", function(val) {
-        if (val) {
-          findPlaces(select.value, view.center); 
-        }
-      });
-
-      // Listen for category changes and find places
-      select.addEventListener('change', function (event) {
-        findPlaces(event.target.value, view.center);
-      });
-  
-      // Listen for mouse clicks and find places
-      view.on("click", function(event){
-        view.hitTest(event.screenPoint)
-          .then(function(response){
-            if (response.results.length < 2) { // If graphic is not clicked, find places 
-findPlaces(select.options[select.selectedIndex].text, event.mapPoint);
-            }
-        })
-      });
-  
-    });
-  </script>
+    <div id="viewDiv"></div>
   </div>
-</head>
-<body>
-  <div id="viewDiv"></div>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
-<script src="script.js"></script>
-</html>
 
-        <!-- <form class="zip-code-form">
-            <input type="text" id="zip-input" placeholder="ex. 10011" required aria-label="Search"></input>
-            <select id="activity" name="activity">
-                <option value="trail">Trail</option>
-                <option value="Campground">Campground</option>
-                <option value="Fishing">Fishing</option>
-                <option value="Ski Resort">Ski Resort</option>
-                <option value="Beach">Beach</option>
-                <option value="WildLife">Wildlife Reserve</option>
-                <option value="Nature Reserve">Nature Reserve</option>
-               </select>
-            <input type="button" class="submit-button" id="submit" value="Search" aria-label="Submit Button"></button>
-        </form> -->
+  <div class = 'form hidden'>
+      <form>
+        <p>(Note: If you're doing a zip based search, we only support US zips at the moment)</p>
+         <label for="city">Enter A City or US Zip To get Weather Details:</label><br>
+         <input type="text" id="js-city" name="city">
+        <button>Search</button>
+      </form>
+      <div id='current-overview'></div>
+      <div id="js-weather-results"></div>
+      <div id="js-error-message"></div>
+      <a id="search-link" href="#" aria-label="Go back to Map Search">Back To Map</a>
+
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://js.arcgis.com/4.18/"></script>
+
+  <script src="map.js"></script>
+  <script src="weather.js"></script>
+</body>
+</html>

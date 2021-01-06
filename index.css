@@ -4,3 +4,9 @@
 .hidden {
     display: none;
 }
+
+html, body, #viewDiv {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
