@@ -5,25 +5,51 @@
   <link rel="stylesheet" type="text/css" href="index.css">
   <title>Outdoorsy</title>
   <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&family=Over+the+Rainbow&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />   
 </head>
 <body>
   <div class='intro'>
+
+    <img class ="logo" src = "https://media1.giphy.com/media/1xVbZGW2fk3XyVpawK/giphy.gif" /> 
     <h1>Outdoorsy</h1>
-    <h2>Think Outside. No Box Required</h2>
-    <p>Find great trails, campsites, and much more with our adventure search</p>
-    <a id="map-link" href="#" aria-label="Click to Get Started">Click to Get Started</a>
+    <p class = "slogan">Think Outside. No Box Required.</p>
+    <p class = "description">Find great trails, campsites, and much more using outdoorsy!</p>
+    <button id="map-link" aria-label="Click to Get Started" >Get Started</button> 
   </div>
 
   <div class="map hidden">
-    <h1>Outdoorsy</h1>
-    <p>Make an adventure type selection and then move around, zoom in/out or click anywhere on the map! 
-   <a id="home-link" href="#" aria-label="Go back to Welcome Page">Back</a>
-    
-   <br>
-   <p>You can also do a quick weather check on your destination of choosing <a id="form-link" href="#" aria-label="Click here for a quick weather check on the location of your choosing">here</a> </p>
-    
-   
+    <div class = 'instructions'>
 
+      <!--Creates the popup body-->
+  <div class="popup-overlay">
+  <!--Creates the popup content-->
+   <div class="popup-content">
+    <p >Make an adventure type selection and then move around, zoom in/out or click anywhere on the map!</p> 
+     <!--popup's close button-->
+      <button class="close">Got it</button>    
+    </div>
+    </div>
+    <img class = "open" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBOqYv82Hhi7OR2fHU0py7iisL60HbtsjlDg&usqp=CAU" width= 40px; height = 40px;/>
+
+
+  <!--Creates the popup body 2-->
+  <div class="popup-overlay-2">
+  <!--Creates the popup content 2-->
+   <div class="popup-content-2">
+    <p > Outdoory also lets you do a comprehensive weather check on your destination of choosing <a id="form-link" href="#" aria-label="Click here for a quick weather check on the location of your choosing">here</a> </p>
+     <!--popup's close button 2-->
+      <button class="close-2">Close</button>    
+    </div>
+    </div>
+    <img class = "open-2" src =" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaUC6Y7IHZtZs4o6tG1DxnJr8Tnh8_Nv5lUw&usqp=CAU" width= 40px; height = 40px;/>
+   <button id="home-link" class="homeLink"aria-label="Go back to Welcome Page">Back</button>
+   </div>
+    
     <div id="viewDiv"></div>
   </div>
 
@@ -31,13 +57,22 @@
       <form>
         <p>(Note: If you're doing a zip based search, we only support US zips at the moment)</p>
          <label for="city">Enter A City or US Zip To get Weather Details:</label><br>
-         <input type="text" id="js-city" name="city">
+         <i class="fa fa-search"></i>
+         <input type="text" id="js-city" name="city" required>
         <button>Search</button>
+
       </form>
+      <button id="search-link"  aria-label="Go back to Map Search">Back To Map</button> <br>
+      <img class = "lightning" src = "https://media2.giphy.com/media/XfgvaYGg8r44DWsJas/source.gif"/>
+
+
+      <div class ="results">
       <div id='current-overview'></div>
       <div id="js-weather-results"></div>
       <div id="js-error-message"></div>
-      <a id="search-link" href="#" aria-label="Go back to Map Search">Back To Map</a>
+    </div>
+
+      
 
   </div>
 
@@ -45,7 +80,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
   <script src="https://js.arcgis.com/4.18/"></script>
 
+
   <script src="map.js"></script>
   <script src="weather.js"></script>
+  <script src="popup.js"></script>
+
 </body>
 </html>

@@ -117,6 +117,7 @@ function navigationListener() {
     $(".map").fadeIn().removeClass('.hidden');
     $(".form").hide().addClass('hidden');
   })
+
 }
 
 

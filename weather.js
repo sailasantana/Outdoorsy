@@ -17,18 +17,21 @@ function displayResults(responseJson){
   
     $('#current-overview').append(
     
-        `<p>(All Temperatures are in Fahrenheit)</p>
-        <h1>${Object.entries(responseJson)[0][1].name},
+        `<div class ='current'>
+        <p>(All Temperatures are in Fahrenheit)</p>
+        <h1 class='location' >${Object.entries(responseJson)[0][1].name},
         ${Object.entries(responseJson)[0][1].country} </h1>
-        <h2>Current : ${Object.entries(responseJson)[1][1].temp_f}, ${Object.entries(responseJson)[1][1].condition.text} </h2>
+        <h2>Currently : ${Object.entries(responseJson)[1][1].temp_f} F,  ${Object.entries(responseJson)[1][1].condition.text} </h2>
+        </div>
         `
     )
   
   
     for(let i=0; i< Object.entries(responseJson)[2][1].forecastday.length; i++){
         $('#js-weather-results').append(
-            `<h2>${Object.entries(responseJson)[2][1].forecastday[i].date} <h2>
-            <ul> 
+            `
+            <ul class = 'box'> 
+            <h2>${Object.entries(responseJson)[2][1].forecastday[i].date} <h2>
             <li> Max Temp : ${Object.entries(responseJson)[2][1].forecastday[i].day.maxtemp_f} </li>
             <li> Min Temp : ${Object.entries(responseJson)[2][1].forecastday[i].day.mintemp_f} </li>
             <li> Description : ${Object.entries(responseJson)[2][1].forecastday[i].day.condition.text} </li>
@@ -64,7 +67,7 @@ function getWeather(q, days){
         .then(responseJson => 
         displayResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something Went Wrong: ${err.message}`)
+            $('#js-error-message').text(`Something Went Wrong: Try a different City or US Zip `)
         })
 
 }
