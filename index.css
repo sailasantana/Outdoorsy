@@ -1,3 +1,6 @@
+
+
+
 * {
     color: #0d0e0db1;
     font-family: 'Roboto', 'sans-serif';
@@ -45,12 +48,16 @@ html, body {
  
   }
 
- .map, .weatherPage{
+ .map {
    background : url('https://cdn.shopify.com/s/files/1/0533/2089/files/5-websites-to-download-free-subtle-textures-subtle.jpg?5724472906039650661');
+   height : 100%;
+   width : 100%;
  }
 
  .weatherPage {
   background : url('blue-snow.png');
+  height : 100%;
+  width : 100%;
 
  }
 
