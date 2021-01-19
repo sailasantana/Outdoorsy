@@ -373,4 +373,16 @@ button {
       text-align:center;
       border-radius:50%;
     }
+
+
+  input[type=text]{
+    width:30%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+   }
   }
