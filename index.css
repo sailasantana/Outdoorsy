@@ -45,8 +45,6 @@ html, body {
     align-items: center;
     justify-content: center;
     text-align: center;
-
-
  
   }
 
@@ -111,6 +109,8 @@ html, body {
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding-top:7px;
+      
 
 
   }
@@ -190,7 +190,7 @@ html, body {
 
 
             .form {
-                margin-top:65px;
+                padding-top:15px;
                 text-align: center;
             }
 
@@ -312,7 +312,7 @@ html, body {
      
 
 
-      @media screen and (max-width: 380px) {
+      @media only screen and (max-width: 600px) {
         
       
       #js-weather-results{
@@ -322,6 +322,7 @@ html, body {
         font-family: 'Roboto', 'sans-serif';
         flex-direction: column;
         align-items: center;
+
 
         
     }
@@ -336,13 +337,12 @@ html, body {
       0 41.8px 33.4px rgba(0, 0, 0, 0.086),
       0 100px 80px rgba(0, 0, 0, 0.12)
     ;
-    
-      
-      
       min-height: 75px;
-      width: 15vw;
+      width: 45vw;
       background: white;
       border-radius: 5px;
       list-style: none;
+      text-align: center;
+ 
     }
   }
