@@ -1,16 +1,11 @@
-$(".open").on("click", function(){
-    $(".popup, .popup-content").addClass("active");
-    });
+     
+function togglePopup(){
+        
+    document.getElementById("popup-1").classList.toggle("active");
+}
 
-$(".close, .popup").on("click", function(){
-    $(".popup, .popup-content").removeClass("active");
-    });
-
-
-$(".open-2").on("click", function(){
-    $(".popup-2, .popup-content-2").addClass("active");
-    });
-
-$(".close-2, .popup-2").on("click", function(){
-    $(".popup-2, .popup-content-2").removeClass("active");
-    });    
+function togglePopup2(){
+       
+    document.getElementById("popup-2").classList.toggle("active");
+      
+}

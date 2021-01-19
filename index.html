@@ -25,35 +25,34 @@
   <div class="map hidden">
     <div class = 'instructions'>
 
-      <!--Creates the popup body-->
-  <div class="popup-overlay">
-  <!--Creates the popup content-->
-   <div class="popup-content">
-    <p >Make an adventure type selection and then move around, zoom in/out or click anywhere on the map!</p> 
-     <!--popup's close button-->
-      <button class="close">Got it</button>    
-    </div>
-    </div>
-    <img class = "open" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBOqYv82Hhi7OR2fHU0py7iisL60HbtsjlDg&usqp=CAU" width= 40px; height = 40px;/>
+      <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+          <div class="close-btn" onclick="togglePopup()">&times;</div>
+          <p class = "prompt">Make an adventure type selection and then move around, zoom in/out or click anywhere on the map!</p>
+        </div>
+      </div>
+      
+      <img class = "open"  onclick="togglePopup()" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBOqYv82Hhi7OR2fHU0py7iisL60HbtsjlDg&usqp=CAU" width= 40px; height = 40px;/>
 
-
-  <!--Creates the popup body 2-->
-  <div class="popup-overlay-2">
-  <!--Creates the popup content 2-->
-   <div class="popup-content-2">
-    <p > Outdoory also lets you do a comprehensive weather check on your destination of choosing <a id="form-link" href="#" aria-label="Click here for a quick weather check on the location of your choosing">here</a> </p>
-     <!--popup's close button 2-->
-      <button class="close-2">Close</button>    
-    </div>
-    </div>
-    <img class = "open-2" src =" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaUC6Y7IHZtZs4o6tG1DxnJr8Tnh8_Nv5lUw&usqp=CAU" width= 40px; height = 40px;/>
+      <div class="popup" id="popup-2">
+        <div class="overlay"></div>
+        <div class="content">
+          <div class="close-btn" onclick="togglePopup2()">&times;</div>
+          <p class = "prompt"> Outdoory also lets you do a comprehensive weather check on your destination of choosing <a id="form-link" href="#" aria-label="Click here for a quick weather check on the location of your choosing">here</a> </p>
+        </div>
+      </div>
+      
+      <img class = "open"  onclick="togglePopup2()"src =" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaUC6Y7IHZtZs4o6tG1DxnJr8Tnh8_Nv5lUw&usqp=CAU" width= 40px; height = 40px;/>
+  
    <button id="home-link" class="homeLink"aria-label="Go back to Welcome Page">Back</button>
    </div>
     
-    <div id="viewDiv"></div>
+    <div id="viewDiv" class="viewDiv"></div>
   </div>
 
-  <div class = 'form hidden'>
+  <div class = 'weatherPage'>
+  <div class = 'form hidden' >
       <form>
         <p>(Note: If you're doing a zip based search, we only support US zips at the moment)</p>
          <label for="city">Enter A City or US Zip To get Weather Details:</label><br>
@@ -72,9 +71,11 @@
       <div id="js-error-message"></div>
     </div>
 
+
       
 
   </div>
+</div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
