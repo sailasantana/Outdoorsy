@@ -109,13 +109,16 @@ function navigationListener() {
   });
 
   $('#form-link').on('click', function(event){
+    $(".weatherPage").fadeIn().removeClass('.hidden')
     $(".form").fadeIn().removeClass('.hidden');
     $(".map").hide().addClass('hidden');
   });
 
   $('#search-link').on('click', function(event){
     $(".map").fadeIn().removeClass('.hidden');
+    $(".weatherPage").hide().addClass('.hidden')
     $(".form").hide().addClass('hidden');
+    
   })
 
 }
