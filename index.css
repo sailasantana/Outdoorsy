@@ -12,7 +12,11 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+
+    
   }
+
+ 
 
  #viewDiv {
     height: 85%;
@@ -39,6 +43,20 @@ html, body {
 
 
  
+  }
+
+ .map, .weatherPage{
+   background : url('https://cdn.shopify.com/s/files/1/0533/2089/files/5-websites-to-download-free-subtle-textures-subtle.jpg?5724472906039650661');
+ }
+
+ .weatherPage {
+  background : url('blue-snow.png');
+
+ }
+
+  .text {
+    font-weight: 500;
+    font-size: 18px;
   }
 
   .intro h1 {
@@ -191,6 +209,7 @@ html, body {
   .location {
     font-family: 'Over the Rainbow', cursive;
      color:#289f8ff5;
+     font-size: 28px;
   }
 
   

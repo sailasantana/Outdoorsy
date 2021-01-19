@@ -18,7 +18,7 @@ function displayResults(responseJson){
     $('#current-overview').append(
     
         `<div class ='current'>
-        <p>(All Temperatures are in Fahrenheit)</p>
+        <p class = "text"> (All Temperatures are in Fahrenheit)</p>
         <h1 class='location' >${Object.entries(responseJson)[0][1].name},
         ${Object.entries(responseJson)[0][1].country} </h1>
         <h2>Currently : ${Object.entries(responseJson)[1][1].temp_f} F,  ${Object.entries(responseJson)[1][1].condition.text} </h2>
@@ -52,10 +52,8 @@ function getWeather(q, days){
     }
 
     const queryString = formatQueryParams(params)
-    console.log(queryString)
 
     const url = baseUrl + '?' + queryString;
-    console.log(url)
     fetch(url)
         .then(response => {
             if(response.ok){
