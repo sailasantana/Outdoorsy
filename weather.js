@@ -31,11 +31,10 @@ function displayResults(responseJson){
         $('#js-weather-results').append(
             `
             <ul class = 'box'> 
-            <h2>${Object.entries(responseJson)[2][1].forecastday[i].date} <h2>
+             <li><h2>${Object.entries(responseJson)[2][1].forecastday[i].date} <h2></li>
             <li> Max Temp : ${Object.entries(responseJson)[2][1].forecastday[i].day.maxtemp_f} </li>
             <li> Min Temp : ${Object.entries(responseJson)[2][1].forecastday[i].day.mintemp_f} </li>
-            <li> Description : ${Object.entries(responseJson)[2][1].forecastday[i].day.condition.text} </li>
-            
+            <li> Description : ${Object.entries(responseJson)[2][1].forecastday[i].day.condition.text} </li>      
             </ul>
             `
         )
@@ -76,7 +75,7 @@ function watchForm(){
         $('#js-weather-results').empty()
 
         event.preventDefault()
-        const q = $('#js-city').val();
+        const q = $('#city').val();
       
         getWeather(q, days)
     })

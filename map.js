@@ -40,7 +40,7 @@ require([
       location: pt,
       categories: [category],
       maxLocations: 105,
-      outFields: ["Place_addr", "PlaceName"]
+      outFields: ["*"]
     })
     .then(function(results) {
       view.popup.close();
