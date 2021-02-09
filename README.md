@@ -4,6 +4,8 @@
 
 An app made for the outdoor recreationalist in search of their next adventure.
 
+Live : https://sailasantana.github.io/Outdoorsy/#
+
 
 # Features
 
@@ -32,4 +34,6 @@ Landing page:
 
 # Built With
 
+* JavaScript
 * jQuery
+* HTML5 & CSS3
